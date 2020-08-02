@@ -1,4 +1,6 @@
 sudo: required
+language: generic
+
 services: 
     - docker
 
@@ -22,11 +24,10 @@ after_success:
     - docker push ssccljh/multi-worker
 
 deploy:
-    edge: true
     provider: elasticbeanstalk
     region: "us-east-2"
     app: "multi-docker"
-    env: "MultiDocker-env"
+    env: "MultiDocker-env-1"
     bucket_name: "elasticbeanstalk-us-east-2-454525226307" # docker stored in the s3 
     bucket_path: "multi-docker" # same with app name
     on:
